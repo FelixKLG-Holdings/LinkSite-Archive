@@ -45,6 +45,8 @@ Route::prefix('auth')->as('auth.')->group(function () {
 });
 
 
-Route::get('whoami', function() {
-    return auth()->user();
+Route::middleware('auth')->group(function () {
+    Route::get('whoami', function() {
+        return auth()->user();
+    });
 });
