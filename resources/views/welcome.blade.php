@@ -58,8 +58,16 @@
         margin-bottom: 30px;
     }
 </style>
+<head>
+    <title>Leystryku | Link Account</title>
 
-<title>Leystryku | Link Account</title>
+    <meta name="theme-color" content="#F18676">
+
+    <meta property="og:site_name" content="Ley's Discord Link"/>
+    <meta property="og:description" content="Link your Discord account and Steam account in the Discord server to recieve access and support."/>
+    <meta property="og:image:secure_url" content="https://leystryku.support/img/icon-anim.gif"/>
+
+
 </head>
 
 <body>
