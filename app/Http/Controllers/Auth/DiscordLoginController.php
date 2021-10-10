@@ -41,6 +41,11 @@ class DiscordLoginController extends Controller
                     ],
                     'thumbnail' => [
                         'url' => Auth::user()->steam_profile_icon
+                    ],
+                    'footer' => [
+                        'text' => 'Ley\'s Discord Link',
+                        'icon_url' => 'https://leystryku.support/img/icon-anim.gif',
+                        'inline' => true
                     ]
                 ]
             ],
