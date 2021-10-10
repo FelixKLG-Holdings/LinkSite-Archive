@@ -65,7 +65,7 @@
 
     <meta property="og:site_name" content="Ley's Discord Link"/>
     <meta property="og:description" content="Link your Discord account and Steam account in the Discord server to recieve access and support."/>
-    <meta property="og:image" content="https://leystryku.support/img/icon-anim.gif"/>
+    <meta property="og:image" content="https://leystryku.support/img/icon-anim.png"/>
     <meta property="og:url" content="https://leystryku.support/"/>
 
 
