@@ -37,7 +37,7 @@ return [
     ],
 
     'discord' => [
-        'client_id' => env('DISCORD_CLIENT_ID'),
+        'client_id' => env('DISCORD_CLIENTID'),
         'client_secret' => env('DISCORD_CLIENT_SECRET'),
         'redirect' => env('APP_URL').'/auth/discord/callback',
 
