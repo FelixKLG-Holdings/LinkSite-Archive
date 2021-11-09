@@ -53,5 +53,8 @@ return [
         'discord_roleid' => env('DISCORD_ROLEID'),
     ],
 
-
+    'leysup' => [
+        'api_phrase' => env('API_PASSPHRASE'),
+        'gms_api_key' => env('GMS_API_KEY')
+    ]
 ];
