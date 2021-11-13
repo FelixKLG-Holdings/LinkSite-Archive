@@ -54,6 +54,7 @@ class User extends Authenticatable
         'discord_token' => 'encrypted',
         'discord_refresh_token' => 'encrypted',
     ];
+    private mixed $steam_profile_icon;
 
     public static function boot()
     {

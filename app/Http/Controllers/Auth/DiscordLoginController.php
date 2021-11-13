@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\GmodStore\GMSRoleController;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -77,6 +78,7 @@ class DiscordLoginController extends Controller
         $this->notification();
         $this->addRole();
         $this->joinGuild();
+        GMSRoleController::GetPurchases();
         return redirect()->route('linked');
     }
 

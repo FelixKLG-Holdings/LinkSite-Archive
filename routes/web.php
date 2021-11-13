@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Auth\DiscordLoginController;
 use App\Http\Controllers\Auth\SteamLoginController;
+use App\Http\Controllers\Auth\DiscordLoginController;
+use App\Http\Controllers\GmodStore\GMSRoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,19 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('welcome');
+});
+
+Route::get('/debug', function () {
+   return view('11welcome');
+})->name('debugy');
+
+Route::get('/debuginfo', [GMSRoleController::class, 'getPurchases']);
+
+
+Route::middleware('api-checks')->group(function () {
+    Route::get('/api', function () {
+
+    });
 });
 
 
@@ -50,3 +64,4 @@ Route::middleware('auth')->group(function () {
         return auth()->user();
     });
 });
+
