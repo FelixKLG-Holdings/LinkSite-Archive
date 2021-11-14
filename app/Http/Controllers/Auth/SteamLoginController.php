@@ -14,7 +14,7 @@ class SteamLoginController extends Controller
     {
         return Socialite::driver('steam')->redirect();
     }
-    public function callback()
+    public function callback(): \Illuminate\Http\RedirectResponse
     {
         $steamUser=Socialite::driver('steam')->user();
         $user = User::firstOrCreate([

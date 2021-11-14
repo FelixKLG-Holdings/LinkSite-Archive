@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GmodStore\GMSRoleController;
+use Everyday\GmodStore\Sdk\ApiException;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 class DiscordLoginController extends Controller
@@ -17,6 +20,9 @@ class DiscordLoginController extends Controller
         return Socialite::driver('discord')->setScopes(['identify', 'guilds', 'guilds.join'])->redirect();
     }
 
+    /**
+     * @throws RequestException
+     */
     public function notification(): \Illuminate\Http\Client\Response
     {
         $discord_webhook = config('services.site.discord_webhook');
@@ -53,6 +59,9 @@ class DiscordLoginController extends Controller
         ])->throw();
     }
 
+    /**
+     * @throws RequestException
+     */
     public function joinGuild(): \Illuminate\Http\Client\Response
     {
         $discord_guildid = config('services.site.discord_guildid');
@@ -71,6 +80,27 @@ class DiscordLoginController extends Controller
         return Http::withToken($discord_bot_token, 'Bot')->put('https://discord.com/api/v9/guilds/'.$discord_guildid.'/members/'.Auth::user()->discord_id.'/roles/' . $discord_roleid);
     }
 
+    /**
+     * @throws ApiException
+     */
+    public function AssignRolesJoin(): void
+    {
+        $sexyErrorsRoleId=884060823205609473;
+        $workshopDLRoleId=884060628128497716;
+        $hitRegRoleId=884060954294386698;
+        $screenGrabRoleId=889306784551026780;
+        $swiftACRoleId=884060408946757663;
+        $LSACRoleId=884061162482847765;
+
+        GMSRoleController::getUserPurchases(Auth::user()->steam_id);
+
+        return;
+    }
+
+    /**
+     * @throws ApiException
+     * @throws RequestException
+     */
     public function callback(): RedirectResponse
     {
         $discordUser = Socialite::driver('discord')->user();
@@ -78,7 +108,7 @@ class DiscordLoginController extends Controller
         $this->notification();
         $this->addRole();
         $this->joinGuild();
-        GMSRoleController::GetPurchases();
+        $this->AssignRolesJoin();
         return redirect()->route('linked');
     }
 
