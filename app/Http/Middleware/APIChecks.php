@@ -10,16 +10,22 @@ class APIChecks
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next): mixed
     {
         $apiKey = config('services.leysup.api_phrase');
-        if (!$request->hasHeader('Key', $apiKey)) {
-            abort(403, 'Access Denied');
+
+        if (!$request->hasHeader('Key')) {
+            abort(401, 'Unauthorized');
+        } else if ($request->hasHeader('Key')) {
+            if ($request->header('Key') != $apiKey) {
+                abort(403, 'Access Denied');
+            } else {
+                return $next($request);
+            }
         }
-        return $next($request);
     }
 }
