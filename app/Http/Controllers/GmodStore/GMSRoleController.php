@@ -37,15 +37,4 @@ class GMSRoleController extends Controller
 
         return($ids);
     }
-
-//    public static function createAddonCoupon($userSID, $addonID, $couponPercent) {
-//        $gmsToken = config('services.leysup.gms_api_key');
-//        $config = Configuration::getDefaultConfiguration()->setAccessToken($gmsToken);
-//
-//        $apiInstance = new AddonCouponsApi(new Client(), $config);
-//        $addonCoupon = new AddonCoupon();
-//
-//        $result = $apiInstance->createAddonCoupon($addonID, $addonCoupon);
-//        return($result);
-//    }
 }
