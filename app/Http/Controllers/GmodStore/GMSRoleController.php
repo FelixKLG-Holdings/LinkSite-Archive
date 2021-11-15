@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\GmodStore;
+namespace App\Http\Controllers\Api\GmodStore;
 
 use Everyday\GmodStore\Sdk\Api\AddonCouponsApi;
 use Everyday\GmodStore\Sdk\Api\UserPurchasesApi;
@@ -32,7 +32,7 @@ class GMSRoleController extends Controller
         })->map(function($purchase) {
             return $purchase['addon']['id'];
         });
-
+//        Log::error($ids);
         Log::error($ids);
 
         return($ids);
