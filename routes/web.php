@@ -20,16 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-
 Route::get('/home', function () {
     return view('welcome');
 });
-
-Route::get('/debug', function () {
-   return view('11welcome');
-})->name('debugy');
-
-Route::get('/debuginfo', [GMSRoleController::class, 'getPurchases']);
 
 
 Route::middleware('api-checks')->group(function () {
@@ -58,10 +51,4 @@ Route::prefix('auth')->as('auth.')->group(function () {
     });
 });
 
-
-Route::middleware('auth')->group(function () {
-    Route::get('whoami', function() {
-        return auth()->user();
-    });
-});
 
