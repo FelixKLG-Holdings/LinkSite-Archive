@@ -14,10 +14,11 @@ class APIChecks
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
-        if ($request->ip() != `127.0.0.1`) {
-            return redirect()->route('debugy')->with('error', 'IP Mismatch: ' . $request->ip());
+        $apiKey = config('services.leysup.api_phrase');
+        if (!$request->hasHeader('Key', $apiKey)) {
+            abort(403, 'Access Denied');
         }
         return $next($request);
     }
