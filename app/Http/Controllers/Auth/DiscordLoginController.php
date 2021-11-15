@@ -80,25 +80,8 @@ class DiscordLoginController extends Controller
         return Http::withToken($discord_bot_token, 'Bot')->put('https://discord.com/api/v9/guilds/'.$discord_guildid.'/members/'.Auth::user()->discord_id.'/roles/' . $discord_roleid);
     }
 
-    /**
-     * @throws ApiException
-     */
-    public function AssignRolesJoin(): void
-    {
-        $sexyErrorsRoleId=884060823205609473;
-        $workshopDLRoleId=884060628128497716;
-        $hitRegRoleId=884060954294386698;
-        $screenGrabRoleId=889306784551026780;
-        $swiftACRoleId=884060408946757663;
-        $LSACRoleId=884061162482847765;
-
-        GMSRoleController::getUserPurchases(Auth::user()->steam_id);
-
-        return;
-    }
 
     /**
-     * @throws ApiException
      * @throws RequestException
      */
     public function callback(): RedirectResponse
@@ -108,7 +91,6 @@ class DiscordLoginController extends Controller
         $this->notification();
         $this->addRole();
         $this->joinGuild();
-        $this->AssignRolesJoin();
         return redirect()->route('linked');
     }
 
