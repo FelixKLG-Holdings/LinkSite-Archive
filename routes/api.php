@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\UserInfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('api-checks')->get('/api', function (Request $request) {
-    return $request->user();
+
+Route::middleware('api-checks')->group(function () {
+    Route::get('/steamid', [UserInfoController::class, 'GetSID']);
 });

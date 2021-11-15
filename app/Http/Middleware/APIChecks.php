@@ -20,8 +20,8 @@ class APIChecks
 
         if (!$request->hasHeader('Key')) {
             abort(401, 'Unauthorized');
-        } else if ($request->hasHeader('Key')) {
-            if ($request->header('Key') != $apiKey) {
+        } else if ($token = $request->header('key')) {
+            if ($token != $apiKey) {
                 abort(403, 'Access Denied');
             } else {
                 return $next($request);
