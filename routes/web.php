@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Auth\SteamLoginController;
 use App\Http\Controllers\Auth\DiscordLoginController;
-use App\Http\Controllers\GmodStore\GMSRoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
