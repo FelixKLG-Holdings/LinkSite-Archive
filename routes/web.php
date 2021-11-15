@@ -24,14 +24,6 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
-
-Route::middleware('api-checks')->group(function () {
-    Route::get('/api', function () {
-
-    });
-});
-
-
 Route::middleware(['auth', 'is-linked'])->group(function () {
     Route::get('/linked', function () {
         return view('linkdone');
@@ -41,8 +33,8 @@ Route::middleware(['auth', 'is-linked'])->group(function () {
 
 Route::prefix('auth')->as('auth.')->group(function () {
     Route::middleware('guest')->group(function () {
-    Route::get('steam', [SteamLoginController::class, 'login'])->name('steam');
-    Route::get('steam/callback', [SteamLoginController::class, 'callback'])->name('steam.callback');
+        Route::get('steam', [SteamLoginController::class, 'login'])->name('steam');
+        Route::get('steam/callback', [SteamLoginController::class, 'callback'])->name('steam.callback');
     });
 
     Route::middleware(['auth', 'has-discord'])->group(function () {
