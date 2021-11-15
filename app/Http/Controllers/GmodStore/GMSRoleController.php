@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Api\GmodStore;
 
-use Everyday\GmodStore\Sdk\Api\AddonCouponsApi;
 use Everyday\GmodStore\Sdk\Api\UserPurchasesApi;
 use Everyday\GmodStore\Sdk\ApiException;
 use Everyday\GmodStore\Sdk\Configuration;
-use Everyday\GmodStore\Sdk\Model\AddonCoupon;
 use GuzzleHttp\Client;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
@@ -33,8 +31,6 @@ class GMSRoleController extends Controller
             return $purchase['addon']['id'];
         });
 //        Log::error($ids);
-        Log::error($ids);
-
         return($ids);
     }
 }
