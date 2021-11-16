@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\DiscordLoginController;
 use App\Http\Controllers\Auth\SteamLoginController;
+use App\Http\Controllers\Auth\DiscordLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-
 Route::get('/home', function () {
     return view('welcome');
 });
-
 
 Route::middleware(['auth', 'is-linked'])->group(function () {
     Route::get('/linked', function () {
@@ -34,8 +32,8 @@ Route::middleware(['auth', 'is-linked'])->group(function () {
 
 Route::prefix('auth')->as('auth.')->group(function () {
     Route::middleware('guest')->group(function () {
-    Route::get('steam', [SteamLoginController::class, 'login'])->name('steam');
-    Route::get('steam/callback', [SteamLoginController::class, 'callback'])->name('steam.callback');
+        Route::get('steam', [SteamLoginController::class, 'login'])->name('steam');
+        Route::get('steam/callback', [SteamLoginController::class, 'callback'])->name('steam.callback');
     });
 
     Route::middleware(['auth', 'has-discord'])->group(function () {
@@ -45,8 +43,3 @@ Route::prefix('auth')->as('auth.')->group(function () {
 });
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('whoami', function() {
-        return auth()->user();
-    });
-});

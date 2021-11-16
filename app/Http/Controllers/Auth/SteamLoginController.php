@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -14,7 +14,7 @@ class SteamLoginController extends Controller
     {
         return Socialite::driver('steam')->redirect();
     }
-    public function callback()
+    public function callback(): \Illuminate\Http\RedirectResponse
     {
         $steamUser=Socialite::driver('steam')->user();
         $user = User::firstOrCreate([

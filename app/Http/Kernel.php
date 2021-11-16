@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\APIChecks;
 use App\Http\Middleware\HasDiscord;
 use App\Http\Middleware\IsLinked;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'has-discord' => HasDiscord::class,
         'is-linked' => IsLinked::class,
+        'api-checks' => APIChecks::class,
     ];
 }

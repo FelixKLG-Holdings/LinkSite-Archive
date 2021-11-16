@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\GmodStore\GMSPurchasesController;
+use Everyday\GmodStore\Sdk\ApiException;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 class DiscordLoginController extends Controller
@@ -16,6 +20,9 @@ class DiscordLoginController extends Controller
         return Socialite::driver('discord')->setScopes(['identify', 'guilds', 'guilds.join'])->redirect();
     }
 
+    /**
+     * @throws RequestException
+     */
     public function notification(): \Illuminate\Http\Client\Response
     {
         $discord_webhook = config('services.site.discord_webhook');
@@ -52,6 +59,9 @@ class DiscordLoginController extends Controller
         ])->throw();
     }
 
+    /**
+     * @throws RequestException
+     */
     public function joinGuild(): \Illuminate\Http\Client\Response
     {
         $discord_guildid = config('services.site.discord_guildid');
@@ -70,6 +80,10 @@ class DiscordLoginController extends Controller
         return Http::withToken($discord_bot_token, 'Bot')->put('https://discord.com/api/v9/guilds/'.$discord_guildid.'/members/'.Auth::user()->discord_id.'/roles/' . $discord_roleid);
     }
 
+
+    /**
+     * @throws RequestException
+     */
     public function callback(): RedirectResponse
     {
         $discordUser = Socialite::driver('discord')->user();
