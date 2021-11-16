@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Api\GmodStore;
+namespace App\Http\Controllers\Api;
 
 use Everyday\GmodStore\Sdk\Api\UserPurchasesApi;
 use Everyday\GmodStore\Sdk\ApiException;
 use Everyday\GmodStore\Sdk\Configuration;
+use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
-class GMSRoleController extends Controller
+class GMSPurchasesController extends Controller
 {
     /**
      * @throws ApiException
@@ -32,5 +34,17 @@ class GMSRoleController extends Controller
         });
 //        Log::error($ids);
         return($ids);
+    }
+
+    public static function getPurchases(Request $request): \Illuminate\Support\Collection
+    {
+        $DiscordID = $request->input('id');
+
+        $SteamID = UserInfoController::intGetSID($DiscordID);
+         try {
+            return self::getUserPurchases($SteamID);
+        } catch (Exception $ex) {
+            Log::error($ex);
+        }
     }
 }

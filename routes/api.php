@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\GMSPurchasesController;
 use App\Http\Controllers\Api\UserInfoController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('api-checks')->group(function () {
     Route::get('/steamid', [UserInfoController::class, 'GetSID']);
+    Route::get('/purchases', [GMSPurchasesController::class, 'getPurchases']);
 });

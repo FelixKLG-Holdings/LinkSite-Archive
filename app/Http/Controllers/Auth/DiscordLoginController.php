@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Api\GmodStore\GMSRoleController;
+use App\Http\Controllers\GmodStore\GMSPurchasesController;
 use Everyday\GmodStore\Sdk\ApiException;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\RedirectResponse;
