@@ -15,8 +15,7 @@ class UserInfoController extends Controller
         $DiscordID = $request->input('id');
 
         try {
-            $LookupUser = User::where('discord_id',$DiscordID)->first();
-            return $LookupUser->steam_id;
+            return User::where('discord_id',$DiscordID)->first()->steam_id;
         } catch (\Exception $e) {
             Log::error($e);
             return abort(404, 'Invalid User');
@@ -26,8 +25,7 @@ class UserInfoController extends Controller
     public static function intGetSID($DiscordID) {
 
         try {
-            $LookupUser = User::where('discord_id',$DiscordID)->first();
-            return $LookupUser->steam_id;
+            return User::where('discord_id',$DiscordID)->first()->steam_id;
         } catch (Exception $e) {
             Log::error($e);
             return abort(404, 'Invalid User');
