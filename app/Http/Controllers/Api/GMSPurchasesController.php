@@ -27,13 +27,12 @@ class GMSPurchasesController extends Controller
         $result = $apiInstance->listUserPurchases($userSID, $with);
         $data = collect(json_decode($result, true)['data']);
 
-        $ids = $data->filter(function($purchase) {
+        $ids = $data->filter(function ($purchase) {
             return !$purchase['revoked'];
-        })->map(function($purchase) {
+        })->map(function ($purchase) {
             return $purchase['addon']['id'];
         });
-//        Log::error($ids);
-        return($ids);
+        return ($ids);
     }
 
     public static function getPurchases(Request $request): \Illuminate\Support\Collection
@@ -41,7 +40,7 @@ class GMSPurchasesController extends Controller
         $DiscordID = $request->input('id');
 
         $SteamID = UserInfoController::intGetSID($DiscordID);
-         try {
+        try {
             return self::getUserPurchases($SteamID);
         } catch (Exception $ex) {
             Log::error($ex);
