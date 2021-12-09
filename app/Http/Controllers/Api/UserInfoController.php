@@ -29,7 +29,6 @@ class UserInfoController extends Controller
         } catch (Exception $e) {
             Log::error($e);
             return abort(404, 'Invalid User');
-
         }
     }
 }
