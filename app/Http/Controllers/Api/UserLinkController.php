@@ -18,7 +18,6 @@ class UserLinkController extends Controller
         try {
             return User::where('discord_id', $DiscordID)->first()->delete();
         } catch (Exception $e) {
-            Log::error($e);
             return abort(404, 'Invalid User');
         }
     }
