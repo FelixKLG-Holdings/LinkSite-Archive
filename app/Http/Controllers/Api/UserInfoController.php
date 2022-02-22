@@ -15,7 +15,7 @@ class UserInfoController extends Controller
         $DiscordID = $request->input('id');
 
         try {
-            return 's'.User::where('discord_id',$DiscordID)->first()->steam_id;
+            return User::where('discord_id',$DiscordID)->first()->steam_id;
         } catch (\Exception $e) {
             Log::error($e);
             return abort(404, 'Invalid User');
