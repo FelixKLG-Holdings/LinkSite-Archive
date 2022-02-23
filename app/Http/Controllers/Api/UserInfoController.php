@@ -17,7 +17,7 @@ class UserInfoController extends Controller
         try {
 //            return User::where('discord_id',$DiscordID)->first()->steam_id;
             return response()->json([
-                'id' => User::where('discord_id',$DiscordID)->first()->steam_id,
+                'id' => (string) User::where('discord_id',$DiscordID)->first()->steam_id,
             ]);
         } catch (\Exception $e) {
             Log::error($e);
