@@ -65,7 +65,7 @@
     <meta property="og:description" content="Link your Discord account and Steam account in the Discord server to recieve access and support."/>
     <meta property="og:image" content="https://leystryku.support/img/icon-static.png"/>
     <meta property="og:url" content="https://leystryku.support/"/>
-    <script async defer data-website-id="628aaba7-ea63-438a-b5c6-da6f5b4d7ad0" src="https://analytics.felixklg.dev/umami.js"></script>
+    <script async defer data-website-id="628aaba7-ea63-438a-b5c6-da6f5b4d7ad0" src="https://analytics.felixklg.dev/VwDrVUy9RFqbFd6.js"></script>
 </head>
 
 <body>
