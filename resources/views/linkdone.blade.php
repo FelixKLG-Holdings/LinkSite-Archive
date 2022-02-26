@@ -63,7 +63,7 @@
 </style>
 <head>
 <title>Leystryku | Account Linked</title>
-    <script async defer data-website-id="628aaba7-ea63-438a-b5c6-da6f5b4d7ad0" src="https://analytics.felixklg.dev/umami.js"></script>
+    <script async defer data-website-id="628aaba7-ea63-438a-b5c6-da6f5b4d7ad0" src="https://analytics.felixklg.dev/VwDrVUy9RFqbFd6.js"></script>
 </head>
 
 <body>
